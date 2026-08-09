@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router"
 
 import { useState } from "react"
@@ -46,8 +45,7 @@ const SignInForm = function (props)
         }
     }
 
-    return 
-    (
+    return (
         <section className="card">
 
             <header>
