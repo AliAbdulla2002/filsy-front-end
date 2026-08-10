@@ -45,9 +45,26 @@ const create = async function (eventFormData)
   }
 }
 
+const deleteEvent = async function (eventId)
+{
+  try {
+    const res = await fetch(`${BASE_URL}/${eventId}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+    return res.json()
+  } catch (error) 
+  {
+    console.log(error)
+  }
+}
+
 
 export { 
     index,
     show,
     create,
+    deleteEvent,
 }
