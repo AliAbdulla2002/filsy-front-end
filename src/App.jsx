@@ -11,6 +11,7 @@ import SignUpForm from "./pages/SignUpForm"
 import SignInForm from "./pages/SignInForm"
 import ExpenseList from "./pages/ExpenseList"
 import ExpenseForm from "./pages/ExpenseForm"
+import ExpenseDetails from "./pages/ExpenseDetails"
 
 import * as expenseService from './services/expenses'
 
@@ -61,7 +62,21 @@ const App = function ()
 
     setExpenses(updatedExpensesList)
 
-    navigate(`/expenses`) 
+    navigate(`/expenses/${expenseId}`) 
+  }
+
+  const handleDeleteExpense = async function (expenseId) 
+  {
+    const deletedExpense = await expenseService.deleteExpense(expenseId)
+    
+    const filteredExpenses = expenses.filter(function (expense) 
+    {
+        return expense._id !== expenseId
+    })
+
+    setExpenses(filteredExpenses)
+    
+    navigate('/expenses')
   }
 
   return (
@@ -75,7 +90,11 @@ const App = function ()
           {user ? (
             <>
               <Route path='/expenses' element={<ExpenseList expenses={expenses} />} />
+              
               <Route path='/expenses/new' element={<ExpenseForm handleAddExpense={handleAddExpense} />} />
+              
+              <Route path='/expenses/:expenseId' element={<ExpenseDetails user={user} handleDeleteExpense={handleDeleteExpense} />} />
+              
               <Route path='/expenses/:expenseId/edit' element={<ExpenseForm handleUpdateExpense={handleUpdateExpense} />} />
             </>
           ) : (
