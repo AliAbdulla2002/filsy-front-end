@@ -14,6 +14,20 @@ const index = async function ()
   }
 }
 
+const show = async function (eventId) 
+{
+  try {
+    const res = await fetch(`${BASE_URL}/${eventId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    })
+    return res.json()
+  } catch (error) 
+  {
+    console.log(error)
+  }
+}
+
 export { 
     index,
+    show,
 }
