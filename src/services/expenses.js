@@ -24,9 +24,26 @@ const show = async function (expenseId)
   }
 }
 
+const create = async function (expenseFormData) {
+  try {
+    const res = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(expenseFormData),
+    })
+    return res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
 
 export { 
     index,
     show,
+    create,
 }
