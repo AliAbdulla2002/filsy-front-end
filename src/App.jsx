@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-
 import { Routes, Route, useNavigate } from "react-router"
 
 import './App.css'
@@ -9,11 +8,15 @@ import Landing from "./pages/Landing"
 import Dashboard from "./pages/Dashboard"
 import SignUpForm from "./pages/SignUpForm"
 import SignInForm from "./pages/SignInForm"
+
 import ExpenseList from "./pages/ExpenseList"
 import ExpenseForm from "./pages/ExpenseForm"
 import ExpenseDetails from "./pages/ExpenseDetails"
 
+import EventList from "./pages/EventList"
+
 import * as expenseService from './services/expenses'
+import * as eventService from './services/events'
 
 const getUserFromToken = function ()  
 {
@@ -29,6 +32,7 @@ const App = function ()
   const [user, setUser] = useState(getUserFromToken())
 
   const [expenses, setExpenses] = useState([])
+  const [events, setEvents] = useState([])
 
   useEffect(function () 
   {
@@ -39,6 +43,18 @@ const App = function ()
     }
 
     if (user) fetchAllExpenses()
+
+  }, [user])
+
+  useEffect(function () 
+  {
+    const fetchAllEvents = async function () 
+    {
+      const eventsData = await eventService.index()
+      setEvents(eventsData)
+    }
+
+    if (user) fetchAllEvents()
 
   }, [user])
 
@@ -90,12 +106,11 @@ const App = function ()
           {user ? (
             <>
               <Route path='/expenses' element={<ExpenseList expenses={expenses} />} />
-              
               <Route path='/expenses/new' element={<ExpenseForm handleAddExpense={handleAddExpense} />} />
-              
               <Route path='/expenses/:expenseId' element={<ExpenseDetails user={user} handleDeleteExpense={handleDeleteExpense} />} />
-              
               <Route path='/expenses/:expenseId/edit' element={<ExpenseForm handleUpdateExpense={handleUpdateExpense} />} />
+
+              <Route path='/events' element={<EventList events={events} />} />
             </>
           ) : (
             <>
