@@ -56,10 +56,10 @@ const ExpenseForm = function (props)
 
       <form onSubmit={handleSubmit}>
 
-        <label>Title (e.g. Lunch)</label>
+        <label>Title</label>
         <input required type='text' name='title' value={formData.title} onChange={handleChange}/>
         
-        <label>Amount (BD)</label>
+        <label>Amount</label>
         <input required type='number' name='amount' value={formData.amount} onChange={handleChange}/>
 
         <label>Category</label>
