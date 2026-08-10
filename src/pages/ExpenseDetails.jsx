@@ -48,7 +48,7 @@ const ExpenseDetails = function (props)
                     Added on <span>{new Date(expense.createdAt).toLocaleDateString()}</span>
                 </p>
 
-                {expense.author._id === props.user._id && (
+                {props.user && expense.owner && (expense.owner._id === props.user._id || expense.owner === props.user._id) && (
                     <div className="actions">
 
                         <button onClick={() => navigate(`/expenses/${expenseId}/edit`)}>Edit</button>
@@ -57,7 +57,7 @@ const ExpenseDetails = function (props)
 
                     </div>
                 )}
-                
+
             </header>
 
         </article>
