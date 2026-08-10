@@ -14,6 +14,7 @@ import ExpenseForm from "./pages/ExpenseForm"
 import ExpenseDetails from "./pages/ExpenseDetails"
 
 import EventList from "./pages/EventList"
+import EventForm from "./pages/EventForm"
 
 import * as expenseService from './services/expenses'
 import * as eventService from './services/events'
@@ -61,9 +62,7 @@ const App = function ()
   const handleAddExpense = async function (formData) 
   {
     const newExpense = await expenseService.create(formData)
-
     setExpenses([newExpense, ...expenses])
-
     navigate('/expenses')
   }
 
@@ -77,7 +76,6 @@ const App = function ()
     })
 
     setExpenses(updatedExpensesList)
-
     navigate(`/expenses/${expenseId}`) 
   }
 
@@ -91,8 +89,27 @@ const App = function ()
     })
 
     setExpenses(filteredExpenses)
-    
     navigate('/expenses')
+  }
+
+  const handleAddEvent = async function (formData) 
+  {
+    const newEvent = await eventService.create(formData)
+    setEvents([newEvent, ...events])
+    navigate('/events')
+  }
+
+  const handleUpdateEvent = async function (eventId, formData) 
+  {
+    const updatedEvent = await eventService.update(eventId, formData)
+    
+    const updatedEventsList = events.map(function (event) 
+    {
+      return eventId === event._id ? updatedEvent : event
+    })
+
+    setEvents(updatedEventsList)
+    navigate(`/events/${eventId}`)
   }
 
   return (
@@ -111,6 +128,8 @@ const App = function ()
               <Route path='/expenses/:expenseId/edit' element={<ExpenseForm handleUpdateExpense={handleUpdateExpense} />} />
 
               <Route path='/events' element={<EventList events={events} />} />
+              <Route path='/events/new' element={<EventForm handleAddEvent={handleAddEvent} />} />
+              <Route path='/events/:eventId/edit' element={<EventForm handleUpdateEvent={handleUpdateEvent} />} />
             </>
           ) : (
             <>

@@ -9,7 +9,7 @@ const EventList = function (props)
             <main className="card">
 
                 <p>You haven't added any saving goals yet!</p>
-                
+
             </main>
         )
     }
@@ -24,10 +24,12 @@ const EventList = function (props)
                     <article className="card">
 
                         <header>
-                            <h2>{event.title}</h2> 
+                            <h2>{event.name}</h2> 
                         </header>
 
-                        <p className="expense-text">Target Amount: {event.amount} BD</p>
+                        <p className="expense-text">Target Amount: {event.targetAmount} BD</p>
+                        
+                        <p className="expense-text">Saved So Far: {event.savedAmount} BD</p>
 
                     </article>
 
