@@ -2,42 +2,51 @@ import { Link } from "react-router"
 
 const ExpenseList = function (props) 
 {
-  return (
-    <main className="expense-list">
+    if (props.expenses.length === 0)
+    {
+        return (
+            <main className="card">
+                <p>You haven't added any expenses yet!</p>
+            </main>
+        )
+    }
 
-      {props.expenses.map((expense) => (
-        
-        <Link key={expense._id} to={`/expenses/${expense._id}`}>
+    return (
+        <main className="expense-list">
 
-            <article className="card">
+            {props.expenses.map((expense) => (
+                
+                <Link key={expense._id} to={`/expenses/${expense._id}`}>
 
-                <header>
+                    <article className="card">
 
-                    <span className="expense-badge">{expense.category}</span>
+                        <header>
 
-                    <h2>{expense.title}</h2> 
+                            <span className="expense-badge">{expense.category}</span>
 
-                </header>
+                            <h2>{expense.title}</h2> 
 
-                <p className="expense-text">Amount: {expense.amount} BD</p>
+                        </header>
 
-                <footer className="expense-footer">
+                        <p className="expense-text">Amount: {expense.amount} BD</p>
 
-                    <span>
+                        <footer className="expense-footer">
 
-                        {new Date(expense.createdAt).toLocaleDateString()}
+                            <span>
 
-                    </span>
+                                {new Date(expense.createdAt).toLocaleDateString()}
 
-                </footer>
+                            </span>
 
-            </article>
+                        </footer>
 
-        </Link>
-      ))}
+                    </article>
 
-    </main>
-  )
+                </Link>
+            ))}
+
+        </main>
+    )
 }
 
 export default ExpenseList
