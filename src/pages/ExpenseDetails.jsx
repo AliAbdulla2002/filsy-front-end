@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 import * as expenseService from '../services/expenses'
 
-const ExpenseDetails = function (props) 
+const ExpenseDetails = function (props)
 {
     const navigate = useNavigate()
 
@@ -12,9 +12,11 @@ const ExpenseDetails = function (props)
 
     const [expense, setExpense] = useState(null)
 
-    useEffect(function () 
+    const [isConfirming, setIsConfirming] = useState(false)
+
+    useEffect(function ()
     {
-        const fetchExpense = async function () 
+        const fetchExpense = async function ()
         {
             const expenseData = await expenseService.show(expenseId)
 
@@ -23,7 +25,7 @@ const ExpenseDetails = function (props)
         fetchExpense()
     }, [expenseId])
 
-    if (!expense) 
+    if (!expense)
     {
         return (
             <main>
@@ -51,9 +53,21 @@ const ExpenseDetails = function (props)
                 {props.user && expense.owner && (expense.owner._id === props.user._id || expense.owner === props.user._id) && (
                     <div className="actions">
 
-                        <button onClick={() => navigate(`/expenses/${expenseId}/edit`)}>Edit</button>
+                        {!isConfirming ? (
+                            <>
+                                <button onClick={() => navigate(`/expenses/${expenseId}/edit`)}>Edit</button>
 
-                        <button onClick={() => props.handleDeleteExpense(expenseId)}>Delete</button>
+                                <button onClick={() => setIsConfirming(true)}>Delete</button>
+                            </>
+                        ) : (
+                            <>
+                                <span>Are you sure? </span>
+
+                                <button onClick={() => props.handleDeleteExpense(expenseId)}>Yes, Delete</button>
+
+                                <button onClick={() => setIsConfirming(false)}>Cancel</button>
+                            </>
+                        )}
 
                     </div>
                 )}
