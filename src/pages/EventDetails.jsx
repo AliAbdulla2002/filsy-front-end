@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 
 import * as eventService from '../services/events'
 
-const EventDetails = function (props) 
+const EventDetails = function (props)
 {
     const navigate = useNavigate()
 
@@ -12,9 +12,11 @@ const EventDetails = function (props)
 
     const [event, setEvent] = useState(null)
 
-    useEffect(function () 
+    const [isConfirming, setIsConfirming] = useState(false)
+
+    useEffect(function ()
     {
-        const fetchEvent = async function () 
+        const fetchEvent = async function ()
         {
             const eventData = await eventService.show(eventId)
 
@@ -23,7 +25,7 @@ const EventDetails = function (props)
         fetchEvent()
     }, [eventId])
 
-    if (!event) 
+    if (!event)
     {
         return (
             <main>
@@ -51,9 +53,21 @@ const EventDetails = function (props)
                 {props.user && event.owner && (event.owner._id === props.user._id || event.owner === props.user._id) && (
                     <div className="actions">
 
-                        <button onClick={() => navigate(`/events/${eventId}/edit`)}>Edit</button>
+                        {!isConfirming ? (
+                            <>
+                                <button onClick={() => navigate(`/events/${eventId}/edit`)}>Edit</button>
 
-                        <button onClick={() => props.handleDeleteEvent(eventId)}>Delete</button>
+                                <button onClick={() => setIsConfirming(true)}>Delete</button>
+                            </>
+                        ) : (
+                            <>
+                                <span>Are you sure? </span>
+
+                                <button onClick={() => props.handleDeleteEvent(eventId)}>Yes, Delete</button>
+
+                                <button onClick={() => setIsConfirming(false)}>Cancel</button>
+                            </>
+                        )}
 
                     </div>
                 )}
