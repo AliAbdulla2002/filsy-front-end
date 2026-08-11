@@ -20,6 +20,8 @@ import EventDetails from "./pages/EventDetails"
 import * as expenseService from './services/expenses'
 import * as eventService from './services/events'
 
+import CurrencyConverter from "./pages/CurrencyConverter"
+
 const getUserFromToken = function ()  
 {
   const token = localStorage.getItem('token')
@@ -148,6 +150,8 @@ const App = function ()
               <Route path='/events/:eventId' element={<EventDetails user={user} handleDeleteEvent={handleDeleteEvent} />} />
               
               <Route path='/events/:eventId/edit' element={<EventForm handleUpdateEvent={handleUpdateEvent} />} />
+
+              <Route path='/converter' element={<CurrencyConverter />} />
             </>
           ) : (
             <>
