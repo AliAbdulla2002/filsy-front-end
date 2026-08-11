@@ -27,9 +27,9 @@ const EventList = function (props)
                             <h2>{event.name}</h2> 
                         </header>
 
-                        <p className="expense-text">Target Amount: {event.targetAmount} BD</p>
+                        <p className="expense-text">Target Amount: {event.targetAmount.toLocaleString()} BD</p>
                         
-                        <p className="expense-text">Saved So Far: {event.savedAmount} BD</p>
+                        <p className="expense-text">Saved So Far: {event.savedAmount.toLocaleString()} BD</p>
 
                     </article>
 

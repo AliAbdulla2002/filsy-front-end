@@ -28,7 +28,7 @@ const ExpenseList = function (props)
 
                         </header>
 
-                        <p className="expense-text">Amount: {expense.amount} BD</p>
+                        <p className="expense-text">Amount: {expense.amount.toLocaleString()} BD</p>
 
                         <footer className="expense-footer">
 

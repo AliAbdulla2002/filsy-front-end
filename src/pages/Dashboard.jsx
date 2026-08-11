@@ -22,7 +22,7 @@ const Dashboard = function (props)
                     <header>
                         <h2>Total Expenses</h2>
                     </header>
-                    <p className="expense-text">{totalExpenses} BD</p>
+                    <p className="expense-text">{totalExpenses.toLocaleString()} BD</p>
                 </article>
 
                 <article className="card">
