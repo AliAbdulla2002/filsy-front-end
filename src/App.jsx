@@ -15,6 +15,7 @@ import ExpenseDetails from "./pages/ExpenseDetails"
 
 import EventList from "./pages/EventList"
 import EventForm from "./pages/EventForm"
+import EventDetails from "./pages/EventDetails"
 
 import * as expenseService from './services/expenses'
 import * as eventService from './services/events'
@@ -109,8 +110,22 @@ const App = function ()
     })
 
     setEvents(updatedEventsList)
-    navigate(`/events/${eventId}`)
+    navigate(`/events/${eventId}`) 
   }
+
+  const handleDeleteEvent = async function (eventId) 
+  {
+    const deletedEvent = await eventService.deleteEvent(eventId)
+    
+    const filteredEvents = events.filter(function (event) 
+    {
+        return event._id !== eventId
+    })
+
+    setEvents(filteredEvents)
+    navigate('/events')
+  }
+
 
   return (
     <div>
@@ -129,6 +144,9 @@ const App = function ()
 
               <Route path='/events' element={<EventList events={events} />} />
               <Route path='/events/new' element={<EventForm handleAddEvent={handleAddEvent} />} />
+              
+              <Route path='/events/:eventId' element={<EventDetails user={user} handleDeleteEvent={handleDeleteEvent} />} />
+              
               <Route path='/events/:eventId/edit' element={<EventForm handleUpdateEvent={handleUpdateEvent} />} />
             </>
           ) : (
