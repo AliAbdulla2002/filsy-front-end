@@ -133,7 +133,7 @@ const App = function ()
       
       <main className="app-main">
         <Routes>
-          <Route path='/' element={user ? <Dashboard user={user} /> : <Landing />} />
+        <Route path='/' element={user ? <Dashboard user={user} expenses={expenses} events={events} /> : <Landing />} />
           
           {user ? (
             <>

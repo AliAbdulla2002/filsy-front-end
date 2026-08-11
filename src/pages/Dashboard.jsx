@@ -2,61 +2,37 @@ import { useEffect, useState } from "react"
 
 import * as expenseService from '../services/expenses'
 
-const Dashboard = function (props)
+const Dashboard = function (props) 
 {
-
-    const [expenses, setExpenses] = useState([])
-
-    useEffect(function ()
+    const totalExpenses = props.expenses.reduce(function (sum, expense) 
     {
-
-        const fetchExpenses = async function ()
-        {
-            const expensesData = await expenseService.index()
-
-            setExpenses(expensesData)
-        }
-        if (props.user) fetchExpenses()
-
-    }, [props.user])
+        return sum + expense.amount
+    }, 0)
 
     return (
-
         <section>
-
             <header>
-
                 <h1>Welcome {props.user.username}!</h1>
-
-                <h2>Your Recent Expenses</h2>
-
+                <h2>Your Financial Summary</h2>
             </header>
             
-            <div className="expense-list">
+            <div className="dashboard-summary">
+                
+                <article className="card">
+                    <header>
+                        <h2>Total Expenses</h2>
+                    </header>
+                    <p className="expense-text">{totalExpenses} BD</p>
+                </article>
 
-                {expenses.length > 0 ? (
-
-                    expenses.map((expense) => (
-
-                        <div className="card" key={expense._id}>
-
-                            <header>
-
-                                <h2>{expense.title}</h2>
-
-                                <p className="expense-badge">{expense.amount} BD</p>
-
-                                <p className="expense-date">Added on {new Date(expense.createdAt).toLocaleDateString()}</p>
-
-                            </header>
-                        </div>
-                    ))
-                ) : (
-                    <p>No expenses found. Start tracking your money!</p>
-                )}
+                <article className="card">
+                    <header>
+                        <h2>Saving Goals</h2>
+                    </header>
+                    <p className="expense-text">You have {props.events.length} active goals</p>
+                </article>
 
             </div>
-            
         </section>
     )
 }
