@@ -22,9 +22,11 @@ const Nav = function (props)
 
                     <li><Link to='/expenses/new'>New Expense</Link></li>
 
+                    <li><Link to='/events'>Saving Goals</Link></li>
+
                     <li><Link to='/events/new'>New Goal</Link></li>
 
-                    <li><Link to='/events'>Saving Goals</Link></li>
+                    <li><Link to='/converter'>Converter</Link></li>
 
                     <li><Link to="/" onClick={handleSignOut}>Sign Out</Link></li>
 
