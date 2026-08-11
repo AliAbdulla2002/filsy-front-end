@@ -9,10 +9,11 @@ const EventForm = function (props)
     const { eventId } = useParams()
 
     const initialState = {
-        
         name: '',
 
         targetAmount: '',
+
+        savedAmount: 0,
     }
 
     const [formData, setFormData] = useState(initialState)
@@ -22,9 +23,9 @@ const EventForm = function (props)
     setFormData({ ...formData, [event.target.name]: event.target.value })
   }
 
-  const handleSubmit = function (event)
+  const handleSubmit = function (evt)
   {
-    event.preventDefault()
+    evt.preventDefault()
 
     if (eventId) 
     {
@@ -60,6 +61,9 @@ const EventForm = function (props)
         
         <label>Target Amount</label>
         <input required type='number' name='targetAmount' value={formData.targetAmount} onChange={handleChange}/>
+
+        <label>Saved Amount</label>
+        <input required type='number' name='savedAmount' value={formData.savedAmount} onChange={handleChange}/>
 
         <button type='submit'>SUBMIT</button>
 
