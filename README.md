@@ -1,16 +1,75 @@
-# React + Vite
+# :money_with_wings: Filsy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Filsy is a modern, responsive personal finance companion designed to help you track your daily expenses, manage saving goals, and convert currencies effortlessly. 
 
-Currently, two official plugins are available:
+## :link: Live Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+• **Frontend (Netlify):** [https://filsy.netlify.app/](https://filsy.netlify.app/).
+• **Backend API (Render):** [https://express-api-filsy-back-end.onrender.com](https://express-api-filsy-back-end.onrender.com).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## :sparkles: Features
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+• **User Authentication:** Secure Sign Up and Sign In functionality..
+• **Dashboard Overview:** A quick summary of total expenses, active saving goals, and live exchange rates..
+• **Expense Tracking:** Add, edit, delete, and categorize your daily expenses (Food, Transport, Bills, etc.)..
+• **Saving Goals:** Set financial targets, track the amount saved, and monitor your progress..
+• **Live Currency Converter:** Convert BHD to USD, GBP, and EUR instantly..
+• **Responsive Design:** Fully responsive layout optimized for mobile, tablet, and desktop viewing..
+
+## :hammer_and_wrench: Technologies Used
+
+### Frontend
+
+• React.js.
+• React Router.
+• Bootstrap (for responsive grid and UI components).
+• Custom CSS.
+
+### Backend
+
+• Node.js.
+• Express.js.
+• MongoDB & Mongoose.
+• JWT (JSON Web Tokens) for Authentication.
+
+## :rocket: Getting Started (Local Development)
+
+If you want to run this project locally, follow these steps:
+
+### Prerequisites
+
+• Node.js installed on your machine..
+• A MongoDB database URI..
+
+### Installation:
+
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/AliAbdulla2002/express-api-filsy-back-end](https://github.com/AliAbdulla2002/filsy-front-end/)
+   ```
+   
+2. **navigate to the project directory:**
+```bash
+cd filsy-frontend
+```
+
+3. **Install dependecies:**
+```bash
+npm install
+```
+
+4. **Start development server:**
+```bash
+npm run dev
+```
+
+# 👨‍💻 Author:
+### Ali Saleh Abdulla
+## GitHub: @AliAbdulla2002 
+
+
+
+   
