@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 
 import * as expenseService from '../services/expenses'
 
-const ExpenseForm = function (props)  
+const ExpenseForm = function (props)
 {
     const { expenseId } = useParams()
 
@@ -28,10 +28,10 @@ const ExpenseForm = function (props)
   {
     evt.preventDefault()
 
-    if (expenseId) 
+    if (expenseId)
     {
         props.handleUpdateExpense(expenseId, formData)
-    } else 
+    } else
     {
         props.handleAddExpense(formData)
     }
@@ -46,42 +46,60 @@ const ExpenseForm = function (props)
         setFormData(expenseData)
     }
     if (expenseId) fetchExpense()
-    
+
     return () => setFormData(initialState)}, [expenseId])
 
   return (
-    <main className='card'>
+    <main className="container mt-5">
 
-    <h1>{expenseId ? 'Edit Expense' : 'New Expense'}</h1>
+        <div className="row justify-content-center">
 
-      <form onSubmit={handleSubmit}>
+            <div className="col-12 col-md-8 col-lg-6">
 
-        <label>Title</label>
-        <input required type='text' name='title' value={formData.title} onChange={handleChange}/>
-        
-        <label>Amount</label>
-        <input required type='number' name='amount' value={formData.amount} onChange={handleChange}/>
+                <div className="card shadow-sm border-0 p-4">
 
-        <label>Category</label>
-        <select required name='category' value={formData.category} onChange={handleChange}>
+                    <h1 className="text-center mb-4 fs-3 fw-bold">{expenseId ? 'Edit Expense' : 'New Expense'}</h1>
 
-          <option value='Food'>Food</option>
+                    <form onSubmit={handleSubmit}>
 
-          <option value='Transport'>Transport</option>
+                        <div className="mb-3">
+                            <label className="form-label fw-bold">Title</label>
+                            <input required type='text' className="form-control" name='title' value={formData.title} onChange={handleChange}/>
+                        </div>
 
-          <option value='Entertainment'>Entertainment</option>
+                        <div className="mb-3">
+                            <label className="form-label fw-bold">Amount</label>
+                            <input required type='number' className="form-control" name='amount' value={formData.amount} onChange={handleChange}/>
+                        </div>
 
-          <option value='Shopping'>Shopping</option>
+                        <div className="mb-4">
+                            <label className="form-label fw-bold">Category</label>
+                            <select required className="form-select" name='category' value={formData.category} onChange={handleChange}>
 
-          <option value='Bills'>Bills</option>
+                                <option value='Food'>Food</option>
 
-          <option value='Other'>Other</option>
+                                <option value='Transport'>Transport</option>
 
-        </select>
+                                <option value='Entertainment'>Entertainment</option>
 
-        <button type='submit'>SUBMIT</button>
+                                <option value='Shopping'>Shopping</option>
 
-      </form>
+                                <option value='Bills'>Bills</option>
+
+                                <option value='Other'>Other</option>
+
+                            </select>
+                        </div>
+
+                        <button type='submit' className="btn btn-primary w-100 fw-bold p-2">SUBMIT</button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </main>
   )
