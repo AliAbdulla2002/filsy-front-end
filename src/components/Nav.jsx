@@ -12,7 +12,7 @@ const Nav = function (props)
 
     return (
         <nav>
-            <Link className="nav-brand" to="/"><img src= "{logo}" alt="filsy" /></Link>
+            <Link className="nav-brand" to="/"><img src= {logo} alt="filsy" /></Link>
             { props.user ? (
                 <ul>
                     <li>Welcome, {props.user.username}!</li>
