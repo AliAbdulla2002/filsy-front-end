@@ -1,6 +1,11 @@
 # :money_with_wings: Filsy
 
-Filsy is a modern, responsive personal finance companion designed to help you track your daily expenses, manage saving goals, and convert currencies effortlessly. 
+Filsy is a modern, responsive personal finance companion designed to help you track your daily expenses, manage saving goals, and convert currencies effortlessly.
+
+## :link: Backend Link:
+
+ **Backend API (Render):** [https://github.com/AliAbdulla2002/express-api-filsy-back-end](https://github.com/AliAbdulla2002/express-api-filsy-back-end).
+
 
 ## :link: Live Links
 
@@ -17,6 +22,10 @@ Filsy is a modern, responsive personal finance companion designed to help you tr
 • **Saving Goals:** Set financial targets, track the amount saved, and monitor your progress..
 • **Live Currency Converter:** Convert BHD to USD, GBP, and EUR instantly..
 • **Responsive Design:** Fully responsive layout optimized for mobile, tablet, and desktop viewing..
+
+## 👨‍🦱 API Used
+
+**[https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/bhd.json](https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/bhd.json).**
 
 ## :hammer_and_wrench: Technologies Used
 
