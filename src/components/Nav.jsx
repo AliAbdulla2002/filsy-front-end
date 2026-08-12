@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import logo from '../assets/logo.png'
 
 const Nav = function (props)
 {
@@ -11,7 +12,7 @@ const Nav = function (props)
 
     return (
         <nav>
-            <Link className="nav-brand" to="/">Filsy</Link>
+            <Link className="nav-brand" to="/"><img src= "{logo}" alt="filsy" /></Link>
             { props.user ? (
                 <ul>
                     <li>Welcome, {props.user.username}!</li>
