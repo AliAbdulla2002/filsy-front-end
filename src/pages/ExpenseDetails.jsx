@@ -28,7 +28,7 @@ const ExpenseDetails = function (props)
     if (!expense)
     {
         return (
-            <main>
+            <main className="container mt-5 d-flex justify-content-center">
 
                 <div className="loader"></div>
 
@@ -37,44 +37,56 @@ const ExpenseDetails = function (props)
     }
 
     return (
-        <article className="card">
+        <main className="container mt-5">
 
-            <header>
-                <span className="expense-badge">{expense.category}</span>
+            <div className="row justify-content-center">
 
-                <h2>{expense.title}</h2>
+                <div className="col-12 col-md-8 col-lg-6">
 
-                <p className="expense-text">Amount: {expense.amount} BD</p>
+                    <article className="card shadow-sm border-0 p-4">
 
-                <p className="expense-date">
-                    Added on <span>{new Date(expense.createdAt).toLocaleDateString()}</span>
-                </p>
+                        <header>
+                            <span className="badge bg-light text-secondary border mb-3 px-3 py-2">{expense.category}</span>
 
-                {props.user && expense.owner && (expense.owner._id === props.user._id || expense.owner === props.user._id) && (
-                    <div className="actions">
+                            <h2 className="fw-bold mb-3">{expense.title}</h2>
 
-                        {!isConfirming ? (
-                            <>
-                                <button onClick={() => navigate(`/expenses/${expenseId}/edit`)}>Edit</button>
+                            <p className="fs-4 fw-bold text-primary mb-2">Amount: {expense.amount} BD</p>
 
-                                <button onClick={() => setIsConfirming(true)}>Delete</button>
-                            </>
-                        ) : (
-                            <>
-                                <span>Are you sure? </span>
+                            <p className="text-muted small mb-4">
+                                Added on <span>{new Date(expense.createdAt).toLocaleDateString()}</span>
+                            </p>
 
-                                <button onClick={() => props.handleDeleteExpense(expenseId)}>Yes, Delete</button>
+                            {props.user && expense.owner && (expense.owner._id === props.user._id || expense.owner === props.user._id) && (
+                                <div className="d-flex gap-3 align-items-center mt-4 border-top pt-4 flex-wrap">
 
-                                <button onClick={() => setIsConfirming(false)}>Cancel</button>
-                            </>
-                        )}
+                                    {!isConfirming ? (
+                                        <>
+                                            <button className="btn btn-primary px-4" onClick={() => navigate(`/expenses/${expenseId}/edit`)}>Edit</button>
 
-                    </div>
-                )}
+                                            <button className="btn btn-outline-danger px-4" onClick={() => setIsConfirming(true)}>Delete</button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span className="text-danger fw-bold">Are you sure? </span>
 
-            </header>
+                                            <button className="btn btn-danger px-3" onClick={() => props.handleDeleteExpense(expenseId)}>Yes, Delete</button>
 
-        </article>
+                                            <button className="btn btn-secondary px-3" onClick={() => setIsConfirming(false)}>Cancel</button>
+                                        </>
+                                    )}
+
+                                </div>
+                            )}
+
+                        </header>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </main>
     )
 }
 
