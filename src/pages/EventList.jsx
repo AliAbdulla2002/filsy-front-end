@@ -1,40 +1,50 @@
 import { Link } from "react-router"
 
-const EventList = function (props) 
+const EventList = function (props)
 {
     if (props.events.length === 0)
     {
         return (
 
-            <main className="card">
+            <main className="container mt-5">
 
-                <p>You haven't added any saving goals yet!</p>
+                <div className="card shadow-sm border-0 text-center p-5">
+                    <p className="fs-5 text-muted m-0">You haven't added any saving goals yet!</p>
+                </div>
 
             </main>
         )
     }
 
     return (
-        <main className="expense-list">
+        <main className="container mt-4 mb-5">
 
-            {props.events.map((event) => (
-                
-                <Link key={event._id} to={`/events/${event._id}`}>
+            <div className="row g-4">
 
-                    <article className="card">
+                {props.events.map((event) => (
 
-                        <header>
-                            <h2>{event.name}</h2> 
-                        </header>
+                    <div key={event._id} className="col-12 col-md-6 col-lg-4">
 
-                        <p className="expense-text">Target Amount: {event.targetAmount.toLocaleString()} BD</p>
+                        <Link to={`/events/${event._id}`} className="text-decoration-none">
+
+                            <article className="card h-100 shadow-sm border-0 p-4">
+
+                                <header className="mb-3">
+                                    <h2 className="fs-5 fw-bold text-dark m-0">{event.name}</h2>
+                                </header>
+
+                                <p className="fs-6 fw-bold text-secondary mb-2">Target Amount: {event.targetAmount.toLocaleString()} BD</p>
+
+                                <p className="fs-5 fw-bold text-primary m-0">Saved So Far: {event.savedAmount.toLocaleString()} BD</p>
+
+                            </article>
+
+                        </Link>
                         
-                        <p className="expense-text">Saved So Far: {event.savedAmount.toLocaleString()} BD</p>
+                    </div>
+                ))}
 
-                    </article>
-
-                </Link>
-            ))}
+            </div>
 
         </main>
     )
