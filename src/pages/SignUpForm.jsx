@@ -4,11 +4,11 @@ import { signUp } from "../services/auth"
 
 import { useNavigate } from "react-router"
 
-const SignUpForm = function (props) 
+const SignUpForm = function (props)
 {
     const navigate = useNavigate()
 
-    const initialState = 
+    const initialState =
     {
         username: '',
 
@@ -21,16 +21,16 @@ const SignUpForm = function (props)
 
     const [message, setMessage] = useState('')
 
-    const handleChange = function (event) 
+    const handleChange = function (event)
     {
         setFormData({...formData, [event.target.name]: event.target.value})
     }
-    
+
     const handleSubmit = async function (event)
     {
         event.preventDefault()
 
-        try 
+        try
         {
             const newUser = await signUp(formData)
 
@@ -40,8 +40,8 @@ const SignUpForm = function (props)
 
             navigate('/')
 
-        } 
-        catch (err) 
+        }
+        catch (err)
         {
             setMessage(err.message)
         }
@@ -53,43 +53,61 @@ const SignUpForm = function (props)
         {
             return true
 
-        } 
+        }
         else return false
     }
 
     return (
-        <section className="card">
+        <main className="container mt-5">
 
-            <header>
+            <div className="row justify-content-center">
 
-                <h1>Sign Up</h1>
+                <div className="col-12 col-md-8 col-lg-6">
 
-                <p>{message}</p>
+                    <section className="card shadow-sm border-0 p-4">
 
-            </header>
+                        <header>
 
-            <form onSubmit={handleSubmit}>
+                            <h1 className="text-center mb-4 fs-3 fw-bold">Sign Up</h1>
 
-                Username:
-                <input type="text" name="username" onChange={handleChange} value={formData.username} required />
+                            <p className="text-danger text-center fw-bold">{message}</p>
 
-                Password:
-                <input type="password" name="password" onChange={handleChange} value={formData.password} required />
+                        </header>
 
-                Confirm Password:
-                <input type="password" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} required />
+                        <form onSubmit={handleSubmit}>
 
-                <div className="actions">
+                            <div className="mb-3">
+                                <label className="form-label fw-bold">Username</label>
+                                <input type="text" className="form-control" name="username" onChange={handleChange} value={formData.username} required />
+                            </div>
 
-                    <button type="submit" disabled={!isFormValid()}>Sign Up</button>
+                            <div className="mb-3">
+                                <label className="form-label fw-bold">Password</label>
+                                <input type="password" className="form-control" name="password" onChange={handleChange} value={formData.password} required  minlength="6" />
+                            </div>
 
-                    <button type="button" onClick={() => navigate('/')}>Cancel</button>
+                            <div className="mb-4">
+                                <label className="form-label fw-bold">Confirm Password</label>
+                                <input type="password" className="form-control" name="confirmPassword" onChange={handleChange} value={formData.confirmPassword} required  minlength="6" />
+                            </div>
+
+                            <div className="d-flex gap-3">
+
+                                <button type="submit" className="btn btn-primary w-100 fw-bold p-2" disabled={!isFormValid()}>Sign Up</button>
+
+                                <button type="button" className="btn btn-outline-secondary w-100 fw-bold p-2" onClick={() => navigate('/')}>Cancel</button>
+
+                            </div>
+
+                        </form>
+
+                    </section>
 
                 </div>
 
-            </form>
-            
-        </section>
+            </div>
+
+        </main>
     )
 }
 
