@@ -28,7 +28,7 @@ const EventDetails = function (props)
     if (!event)
     {
         return (
-            <main>
+            <main className="container mt-5 d-flex justify-content-center">
 
                 <div className="loader"></div>
 
@@ -37,44 +37,56 @@ const EventDetails = function (props)
     }
 
     return (
-        <article className="card">
+        <main className="container mt-5">
 
-            <header>
-                <h2>{event.name}</h2>
+            <div className="row justify-content-center">
 
-                <p className="expense-text">Target Amount: {event.targetAmount} BD</p>
+                <div className="col-12 col-md-8 col-lg-6">
 
-                <p className="expense-text">Saved So Far: {event.savedAmount} BD</p>
+                    <article className="card shadow-sm border-0 p-4">
 
-                <p className="expense-date">
-                    Created on <span>{new Date(event.createdAt).toLocaleDateString()}</span>
-                </p>
+                        <header>
+                            <h2 className="fw-bold mb-3">{event.name}</h2>
 
-                {props.user && event.owner && (event.owner._id === props.user._id || event.owner === props.user._id) && (
-                    <div className="actions">
+                            <p className="fs-5 fw-bold text-secondary mb-2">Target Amount: {event.targetAmount.toLocaleString()} BD</p>
 
-                        {!isConfirming ? (
-                            <>
-                                <button onClick={() => navigate(`/events/${eventId}/edit`)}>Edit</button>
+                            <p className="fs-4 fw-bold text-primary mb-3">Saved So Far: {event.savedAmount.toLocaleString()} BD</p>
 
-                                <button onClick={() => setIsConfirming(true)}>Delete</button>
-                            </>
-                        ) : (
-                            <>
-                                <span>Are you sure? </span>
+                            <p className="text-muted small mb-4">
+                                Created on <span>{new Date(event.createdAt).toLocaleDateString()}</span>
+                            </p>
 
-                                <button onClick={() => props.handleDeleteEvent(eventId)}>Yes, Delete</button>
+                            {props.user && event.owner && (event.owner._id === props.user._id || event.owner === props.user._id) && (
+                                <div className="d-flex gap-3 align-items-center mt-4 border-top pt-4 flex-wrap">
 
-                                <button onClick={() => setIsConfirming(false)}>Cancel</button>
-                            </>
-                        )}
+                                    {!isConfirming ? (
+                                        <>
+                                            <button className="btn btn-primary px-4" onClick={() => navigate(`/events/${eventId}/edit`)}>Edit</button>
 
-                    </div>
-                )}
+                                            <button className="btn btn-outline-danger px-4" onClick={() => setIsConfirming(true)}>Delete</button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span className="text-danger fw-bold">Are you sure? </span>
 
-            </header>
+                                            <button className="btn btn-danger px-3" onClick={() => props.handleDeleteEvent(eventId)}>Yes, Delete</button>
 
-        </article>
+                                            <button className="btn btn-secondary px-3" onClick={() => setIsConfirming(false)}>Cancel</button>
+                                        </>
+                                    )}
+
+                                </div>
+                            )}
+
+                        </header>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </main>
     )
 }
 
