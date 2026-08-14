@@ -1,4 +1,6 @@
 import { Link } from 'react-router'
+import logo from '../assets/logo.png'
+
 
 const NavBar = ({ user, handleSignOut }) => {
     return (
@@ -6,7 +8,7 @@ const NavBar = ({ user, handleSignOut }) => {
             <div className="container">
                 
                 <Link className="navbar-brand d-flex align-items-center" to="/">
-                    <img src="/logo.png" alt="Filsy" width="40" className="me-2" />
+                    <img src="" alt= {logo} width="40" className="me-2" />
                     <span className="fw-bold">filsy</span>
                 </Link>
 
