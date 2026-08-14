@@ -77,3 +77,16 @@ a .card:hover, .dashboard-summary .card:hover {
     margin-top: 10px !important;
   }
 }
+
+.navbar .nav-link {
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #dc3545 !important;
+}
+
+.navbar .nav-link.active {
+  color: #dc3545 !important;
+  font-weight: bold;
+}

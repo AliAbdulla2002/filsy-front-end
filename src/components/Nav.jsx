@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, NavLink } from "react-router"
 import logo from '../assets/logo.png'
 
 const Nav = function (props)
@@ -36,22 +36,22 @@ const Nav = function (props)
                                 Welcome, {props.user.username}!
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/'>Dashboard</Link>
+                                <NavLink className="nav-link fw-semibold" to='/' end>Dashboard</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/expenses'>Expenses</Link>
+                                <NavLink className="nav-link fw-semibold" to='/expenses'>Expenses</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/expenses/new'>New Expense</Link>
+                                <NavLink className="nav-link fw-semibold" to='/expenses/new'>New Expense</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/events'>Saving Goals</Link>
+                                <NavLink className="nav-link fw-semibold" to='/events'>Saving Goals</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/events/new'>New Goal</Link>
+                                <NavLink className="nav-link fw-semibold" to='/events/new'>New Goal</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/converter'>Converter</Link>
+                                <NavLink className="nav-link fw-semibold" to='/converter'>Converter</NavLink>
                             </li>
                             <li className="nav-item mt-2 mt-lg-0">
                                 <Link className="btn btn-outline-danger btn-sm px-4" to="/" onClick={handleSignOut}>
@@ -62,10 +62,10 @@ const Nav = function (props)
                     ) : (
                         <ul className="navbar-nav ms-auto align-items-center gap-3 text-center mt-3 mt-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/'>Home</Link>
+                                <NavLink className="nav-link fw-semibold" to='/' end>Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-dark" to='/sign-up'>Sign Up</Link>
+                                <NavLink className="nav-link fw-semibold" to='/sign-up'>Sign Up</NavLink>
                             </li>
                             <li className="nav-item mt-2 mt-lg-0">
                                 <Link className="btn btn-primary btn-sm px-4" to='/sign-in'>
