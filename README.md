@@ -2,6 +2,13 @@
 
 Filsy is a modern, responsive personal finance companion designed to help you track your daily expenses, manage saving goals, and convert currencies effortlessly.
 
+<img width="1920" height="1034" alt="image" src="https://github.com/user-attachments/assets/e368e14b-be69-43ff-b9a2-2d9ab6083b6c" />
+
+## 🔐 Login (If want to try it without signup)
+
+**User name:** ```Ali```
+**Password:** ```TEST123456```
+
 ## :link: Backend Link:
 
  **Backend API (Render):** [https://github.com/AliAbdulla2002/express-api-filsy-back-end](https://github.com/AliAbdulla2002/express-api-filsy-back-end).
